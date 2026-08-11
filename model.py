@@ -44,8 +44,13 @@ def decode_ids(ids, vocab):
 
      return s
 
-# Step 4 - embed_tokens (not yet solved)
-# TODO: implement
+# Step 4 - embed_tokens
+import torch
+
+def embed_tokens(token_ids, token_embedding):
+    E=torch.tensor(token_embedding)
+    X=E[token_ids]
+    return X
 
 # Step 5 - add_positional_embeddings (not yet solved)
 # TODO: implement
