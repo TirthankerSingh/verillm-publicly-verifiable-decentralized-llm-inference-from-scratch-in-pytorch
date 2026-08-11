@@ -25,8 +25,15 @@ def build_char_vocab(corpus):
         "itos":itos
     }
 
-# Step 2 - encode_string (not yet solved)
-# TODO: implement
+# Step 2 - encode_string
+import numpy as np
+def encode_string(text, vocab):
+    arr=np.zeros(len(text),dtype=np.int8)
+
+    for i in range(len(text)):
+        arr[i]=vocab['stoi'].get(text[i])
+
+    return arr.tolist()
 
 # Step 3 - decode_ids (not yet solved)
 # TODO: implement
