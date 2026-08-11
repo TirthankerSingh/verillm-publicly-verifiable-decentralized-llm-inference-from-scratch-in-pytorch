@@ -35,8 +35,14 @@ def encode_string(text, vocab):
 
     return arr.tolist()
 
-# Step 3 - decode_ids (not yet solved)
-# TODO: implement
+# Step 3 - decode_ids
+def decode_ids(ids, vocab):
+     s=""
+     for i in range(len(ids)):
+         c=vocab['itos'].get(ids[i])
+         s+=c
+
+     return s
 
 # Step 4 - embed_tokens (not yet solved)
 # TODO: implement
