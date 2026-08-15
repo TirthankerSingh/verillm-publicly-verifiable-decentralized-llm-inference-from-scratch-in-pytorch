@@ -84,8 +84,14 @@ def scale_attention_scores(scores, d_head):
     output=scores/d
     return output
 
-# Step 9 - apply_causal_mask (not yet solved)
-# TODO: implement
+# Step 9 - apply_causal_mask
+def apply_causal_mask(scores, query_offset=0):
+    
+    for score in scores:
+        for i in range(len(score)):
+            score[i]=score[i] if i<=query_offset else -float("inf")
+        query_offset+=1
+    return scores
 
 # Step 10 - softmax_attention_weights (not yet solved)
 # TODO: implement
