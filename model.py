@@ -78,8 +78,11 @@ def compute_attention_scores(queries, keys):
    output=queries@keys.T
    return output
 
-# Step 8 - scale_attention_scores (not yet solved)
-# TODO: implement
+# Step 8 - scale_attention_scores
+def scale_attention_scores(scores, d_head):
+    d=d_head**(0.5)
+    output=scores/d
+    return output
 
 # Step 9 - apply_causal_mask (not yet solved)
 # TODO: implement
