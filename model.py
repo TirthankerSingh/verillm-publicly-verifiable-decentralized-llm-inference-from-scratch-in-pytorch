@@ -64,8 +64,13 @@ def add_positional_embeddings(token_embeds, pos_embedding, start_pos=0):
 
     return arr
 
-# Step 6 - linear_projection (not yet solved)
-# TODO: implement
+# Step 6 - linear_projection
+import numpy as np
+
+def linear_projection(x, weight, bias=None):
+    
+    output=np.matmul(x,weight)+(bias if bias is not None else 0)
+    return output
 
 # Step 7 - compute_attention_scores (not yet solved)
 # TODO: implement
