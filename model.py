@@ -72,8 +72,11 @@ def linear_projection(x, weight, bias=None):
     output=np.matmul(x,weight)+(bias if bias is not None else 0)
     return output
 
-# Step 7 - compute_attention_scores (not yet solved)
-# TODO: implement
+# Step 7 - compute_attention_scores
+import numpy as np
+def compute_attention_scores(queries, keys):
+   output=queries@keys.T
+   return output
 
 # Step 8 - scale_attention_scores (not yet solved)
 # TODO: implement
