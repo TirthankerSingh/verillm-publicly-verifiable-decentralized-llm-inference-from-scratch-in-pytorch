@@ -85,13 +85,13 @@ def scale_attention_scores(scores, d_head):
     return output
 
 # Step 9 - apply_causal_mask
+import numpy as np
 def apply_causal_mask(scores, query_offset=0):
-    
-    for score in scores:
-        for i in range(len(score)):
-            score[i]=score[i] if i<=query_offset else -float("inf")
-        query_offset+=1
-    return scores
+  Tq,Tk=scores.shape
+  query_indices=np.arange(Tq)[:,None]+query_offset
+  key_indices=np.arange(Tk)[None,:]
+
+  return np.where( key_indices <= query_indices, scores, -np.inf )
 
 # Step 10 - softmax_attention_weights (not yet solved)
 # TODO: implement
