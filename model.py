@@ -93,8 +93,27 @@ def apply_causal_mask(scores, query_offset=0):
 
   return np.where( key_indices <= query_indices, scores, -np.inf )
 
-# Step 10 - softmax_attention_weights (not yet solved)
-# TODO: implement
+# Step 10 - softmax_attention_weights
+def softmax_attention_weights(masked_scores):
+
+    output = np.zeros_like(masked_scores)
+
+    for i in range(len(masked_scores)):
+        masked_score = masked_scores[i]
+
+        r_max = np.max(masked_score)
+
+        v = np.where(
+            masked_score == -np.inf,
+            0,
+            np.exp(masked_score - r_max)
+        )
+
+        sigma = np.sum(v)
+
+        output[i] = v / sigma
+
+    return output
 
 # Step 11 - weighted_value_sum (not yet solved)
 # TODO: implement
