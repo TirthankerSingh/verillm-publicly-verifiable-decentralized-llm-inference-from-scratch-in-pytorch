@@ -52,8 +52,17 @@ def embed_tokens(token_ids, token_embedding):
     X=E[token_ids]
     return X
 
-# Step 5 - add_positional_embeddings (not yet solved)
-# TODO: implement
+# Step 5 - add_positional_embeddings
+import torch 
+
+def add_positional_embeddings(token_embeds, pos_embedding, start_pos=0):
+    
+    arr=torch.zeros(token_embeds.shape)
+
+    for i in range(len(token_embeds)):
+       arr[i]=token_embeds[i]+pos_embedding[i+start_pos]
+
+    return arr
 
 # Step 6 - linear_projection (not yet solved)
 # TODO: implement
